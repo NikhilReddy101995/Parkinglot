@@ -12,8 +12,11 @@ class TestSum(unittest.TestCase):
     def test_Parkinglot_capacity(self):
         Parkinglotobj=Parkinglot()
         self.assertEqual(Parkinglotobj.capacity,0, "Should be 0")
-        Parkinglotobj=Parkinglot(6)
-        self.assertEqual(Parkinglotobj.capacity,6, "Should be 0")
+
+    def test_Parkinglot_createSpace(self):
+        Parkinglotobj=Parkinglot()
+        self.assertEqual(Parkinglotobj.createSpace(6),"Created a parking lot with 6 slots", "Should be 6") 
+
                          
 if __name__ == '__main__':
     unittest.main()
