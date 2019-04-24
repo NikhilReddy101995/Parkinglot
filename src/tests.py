@@ -28,7 +28,28 @@ class TestSum(unittest.TestCase):
         Parkinglotobj=Parkinglot()       
         Parkinglotobj.createSpace(6)
         string=Parkinglotobj.slotAllot(vehicleobj)
-        self.assertEqual(string,"Allocated slot number: 1", "Should be Allocated slot number: 1")   
+        self.assertEqual(string,"Allocated slot number: 1", "Should be Allocated slot number: 1")  
+        
+    def test1_Parkinglot_freeSlot1(self):
+        Parkinglotobj=Parkinglot()
+        string=Parkinglotobj.freeSlot(0)
+        self.assertEqual(string,"Parking lot doesnot have 0", "Should be Parking lot doesnot have 0")  
+
+    def test1_Parkinglot_freeSlot2(self):
+        vehicleobj=vehicle('KA-01-HH-1234','red')
+        Parkinglotobj=Parkinglot()
+        Parkinglotobj.createSpace(6)
+        string=Parkinglotobj.slotAllot(vehicleobj)
+        string=Parkinglotobj.freeSlot(1)
+        self.assertEqual(string,"Slot number 1 is free", "Should be Slot number 1 is free") 
+        
+    def test2_Parkinglot_freeSlot3(self):
+        vehicleobj=vehicle('KA-01-HH-1234','red')
+        Parkinglotobj=Parkinglot()
+        Parkinglotobj.createSpace(6)
+        string=Parkinglotobj.slotAllot(vehicleobj)
+        string=Parkinglotobj.freeSlot(2)
+        self.assertEqual(string,"slot is already free", "Should be slot is already free") 
                       
 if __name__ == '__main__':
     unittest.main()

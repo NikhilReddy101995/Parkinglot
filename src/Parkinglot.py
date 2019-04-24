@@ -22,3 +22,15 @@ class Parkinglot:
                 break
         if flag:
             return "Sorry, parking lot is full"
+
+    def freeSlot(self,slotId):
+        if slotId < (self.capacity) :
+            if self.slot[slotId-1]==None:
+                return("slot is already free")
+            else:
+                self.slot[slotId-1]=None
+                return "Slot number "+str(slotId)+" is free"
+            
+        elif self.capacity ==0:
+            return "Parking lot doesnot have "+str(slotId)
+            
