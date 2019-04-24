@@ -33,4 +33,10 @@ class Parkinglot:
             
         elif self.capacity ==0:
             return "Parking lot doesnot have "+str(slotId)
-            
+    
+    def status(self):
+        string="Slot No.   Registration_No   Colour"
+        for members in range(0,self.capacity):
+            if self.slot[members]!=None:
+                string=string+"\n"+"   "+str(members+1)+"       "+str(self.slot[members].RegestrationNo)+"       "+str(self.slot[members].color)
+        return string
