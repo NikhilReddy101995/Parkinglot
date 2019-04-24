@@ -35,16 +35,21 @@ def commandLine(line,parkinglotObj):
 
 if __name__ == '__main__':
     parkinglotObj=Parkinglot()
-    if len(sys.argv) ==3:
-        with open(r"../data//"+str(sys.argv[2]),"r") as f:
-            lines=f.readlines()
-            for line in lines:
-                print(commandLine(str(line),parkinglotObj))
-    elif len(sys.argv) ==2:
+    if len(sys.argv) ==2:
+        try:
+            with open(r"data//"+str(sys.argv[1]),"r") as f:
+                lines=f.readlines()
+                for line in lines:
+                    print(commandLine(str(line),parkinglotObj))
+        except:
+            print("Please check the text file name")
+    elif len(sys.argv) ==1:
         while(1):
             line=str(input("#"))
             if line=="exit":
                 break
             print(commandLine(line,parkinglotObj))
+    else:
+        print("Too many arguments")
         
 
