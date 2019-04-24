@@ -11,3 +11,14 @@ class Parkinglot:
         self.capacity=capacity
         self.slot = [None]*capacity
         return "Created a parking lot with "+str(self.capacity)+" slots"
+
+    def slotAllot(self,vehicle):
+        flag=True
+        for members in range(0,self.capacity):
+            if self.slot[members]==None:
+                self.slot[members] = vehicle
+                flag=False
+                return "Allocated slot number: "+str(members+1)
+                break
+        if flag:
+            return "Sorry, parking lot is full"
