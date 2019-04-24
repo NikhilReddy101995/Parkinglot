@@ -49,3 +49,21 @@ class Parkinglot:
         if len(stringofregisterNo)==0:
             return "no vehicle found"
         return stringofregisterNo[:-1]
+
+    def slotOf_registerNo(self,RegestrationNo):
+        Found=False
+        for members in range(0,self.capacity):
+            if self.slot[members]!= None and self.slot[members].RegestrationNo==RegestrationNo :
+                Found=True
+                return str(members+1)        
+        if Found== False:
+            return "Not Found"
+        
+    def slotsOf_rcolor(self,color):
+        stringofregisterNo=""
+        for members in range(0,self.capacity):
+            if self.slot[members]!= None and self.slot[members].color==color :
+                stringofregisterNo=stringofregisterNo+str(members+1)+","
+        if len(stringofregisterNo)==0:
+            return "no slot found"
+        return stringofregisterNo[:-1]

@@ -79,6 +79,39 @@ class TestSum(unittest.TestCase):
         Parkinglotobj.createSpace(6)
         Parkinglotobj.slotAllot(vehicleobj)        
         self.assertEqual(Parkinglotobj.registerNo_ofColor('white'),"no vehicle found", "Should be no vehicle found")
+
+    def test_Parkinglot_slotOf_registerNo1(self):
+        Parkinglotobj=Parkinglot()
+        self.assertEqual(Parkinglotobj.slotOf_registerNo('KA-01-HH-1234'),"Not Found", "Should be Not Found")
+        
+    def test_Parkinglot_slotOf_registerNo2(self):
+        vehicleobj=vehicle('KA-01-HH-1234','red')
+        Parkinglotobj=Parkinglot()
+        Parkinglotobj.createSpace(6)
+        Parkinglotobj.slotAllot(vehicleobj)        
+        self.assertEqual(Parkinglotobj.slotOf_registerNo("KA-01-HH-1234"),"1", "Should be 1")
+        
+    def test_Parkinglot_slotsOf_rcolor1(self):
+        Parkinglotobj=Parkinglot()
+        self.assertEqual(Parkinglotobj.slotsOf_rcolor('red'),"no slot found", "Should be no slot found")
+        
+    def test_Parkinglot_slotsOf_rcolor2(self):
+        vehicleobj1=vehicle('KA-01-HH-1234','red')
+        vehicleobj2=vehicle('KA-01-HH-1235','red')
+        Parkinglotobj=Parkinglot()
+        Parkinglotobj.createSpace(6)
+        Parkinglotobj.slotAllot(vehicleobj1)
+        Parkinglotobj.slotAllot(vehicleobj2)        
+        self.assertEqual(Parkinglotobj.slotsOf_rcolor('red'),"1,2", "Should be KA-01-HH-1234")
+
+    def test_Parkinglot_slotsOf_rcolor3(self):
+        vehicleobj1=vehicle('KA-01-HH-1234','red')
+        vehicleobj2=vehicle('KA-01-HH-1235','red')
+        Parkinglotobj=Parkinglot()
+        Parkinglotobj.createSpace(6)
+        Parkinglotobj.slotAllot(vehicleobj1)
+        Parkinglotobj.slotAllot(vehicleobj2)        
+        self.assertEqual(Parkinglotobj.slotsOf_rcolor('white'),"no slot found", "Should be no slot found")
         
 if __name__ == '__main__':
     unittest.main()
